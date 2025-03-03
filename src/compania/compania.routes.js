@@ -41,7 +41,6 @@ router.put(
         check("contactEmail", "Email de empresa es obligatio").isEmail(),
         check("contactPhone", "No. Telefonico de empresa es obligatorio").isLength({ min: 8, max: 8 }),
         validarCampos
-
     ],
     updateCompania
 );
