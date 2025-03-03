@@ -39,8 +39,6 @@ export const login = async (req, res) => {
                 token: token
             }
         })
-
-        
     } catch (error) {
         console.log(e);
         res.status(500).json({

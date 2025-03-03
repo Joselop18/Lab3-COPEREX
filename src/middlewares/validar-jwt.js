@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-
 import Usuario from "../admin/admin.model.js";
 
 export const validarJWT = async(req, res, next) => {
@@ -14,7 +13,6 @@ export const validarJWT = async(req, res, next) => {
 
     try{
         const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
-        
         const usuario = await Usuario.findById(uid)
 
         if(!usuario){
@@ -30,13 +28,12 @@ export const validarJWT = async(req, res, next) => {
         }
 
         req.usuario = usuario;
-
         next();
+
     }catch(e){
         console.log(e);
         res.status(401).json({
             msg: "Token invalido"
         })
     }
-    
 }

@@ -26,11 +26,8 @@ const configurarRutas = (app) => {
 const crearAdmin = async () => {
     try {
         const adminExistente = await Usuario.findOne({ email: "admin@gmail.com" });
-
         if (!adminExistente) {
-
             const passwordEncriptada = await hash("Admin123");
-
             const admin = new Usuario({
                 name: "Admin",
                 surname: "Dueño",
@@ -39,7 +36,6 @@ const crearAdmin = async () => {
                 phone: "52646846",
                 password: passwordEncriptada
             });
-
             await admin.save();
             console.log("Se creo el Admin correctamente por defecto");
         } else {
