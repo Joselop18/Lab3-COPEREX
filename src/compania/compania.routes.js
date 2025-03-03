@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createCompania, getCompanias, updateCompania } from "./compania.controller.js";
+import { createCompania, getCompanias, updateCompania, generarReporte } from "./compania.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 
@@ -43,6 +43,14 @@ router.put(
         validarCampos
     ],
     updateCompania
+);
+
+router.get(
+    "/report",
+    [
+        validarJWT,
+    ],
+    generarReporte
 );
 
 export default router;

@@ -8,6 +8,7 @@ import { dbConnection } from './mongo.js';
 import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js'
 import Usuario from "../src/admin/admin.model.js";
+import companiaRoutes from "../src/compania/compania.routes.js"
 import { hash } from "argon2";
 
 const configurarMiddlewares = (app) => {
@@ -21,13 +22,14 @@ const configurarMiddlewares = (app) => {
 
 const configurarRutas = (app) => {
     app.use("/companySystem/v1/auth", authRoutes);
+    app.use("/companySystem/v1/companias", companiaRoutes);
 }
 
 const crearAdmin = async () => {
     try {
         const adminExistente = await Usuario.findOne({ email: "admin@gmail.com" });
         if (!adminExistente) {
-            const passwordEncriptada = await hash("Admin123");
+            const passwordEncriptada = await hash("Admin1234");
             const admin = new Usuario({
                 name: "Admin",
                 surname: "Dueño",

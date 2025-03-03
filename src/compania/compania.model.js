@@ -44,10 +44,10 @@ const CompanySchema = new mongoose.Schema({
     }
 });
 
-CompaniaSchema.methods.toJSON = function() {
+CompanySchema.methods.toJSON = function() {
     const {__v, _id, ...empresa} = this.toObject();
     empresa.id = _id;
     return empresa;
 }
 
-export default mongoose.model("Compañia", CompaniaSchema);
+export default mongoose.model("Compañia", CompanySchema);

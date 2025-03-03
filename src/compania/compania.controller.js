@@ -1,4 +1,4 @@
-import Company from "../compania/compania.model.js";
+import Compania from "../compania/compania.model.js";
 import ExcelJS from "exceljs";
 
 export const createCompania = async (req, res) => {
@@ -96,6 +96,54 @@ export const updateCompania = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "No se pudo actualizar la empresa, hubo error",
+            error: error.message
+        });
+    }
+};
+
+export const generarReporte = async (req, res) => {
+    try {
+        const companias = await Compania.find({});
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Reporte de Empresas');
+
+        worksheet.columns = [
+            { header: 'ID', key: 'id', width: 36 },
+            { header: 'Nombre', key: 'name', width: 30 },
+            { header: 'Nivel de impacto', key: 'impactLevel', width: 20 },
+            { header: 'Años de experiencia', key: 'yearsOfExperience', width: 20 },
+            { header: 'Categoría', key: 'category', width: 20 },
+            { header: 'Descripción', key: 'description', width: 50 },
+            { header: 'Email de empresa', key: 'contactEmail', width: 30 },
+            { header: 'Teléfono de empresa', key: 'contactPhone', width: 20 },
+            { header: 'Fecha de Registro', key: 'registrationDate', width: 30 },
+            { header: 'Estado', key: 'status', width: 15 }
+        ];
+
+        companias.forEach(compania => {
+            worksheet.addRow({
+                id: compania.id,
+                name: compania.name,
+                impactLevel: compania.impactLevel,
+                yearsOfExperience: compania.yearsOfExperience,
+                category: compania.category,
+                description: compania.description || 'N/A',
+                contactEmail: compania.contactEmail,
+                contactPhone: compania.contactPhone,
+                registrationDate: compania.registrationDate.toISOString().slice(0, 10),
+                status: compania.status ? 'Activa' : 'Inactiva'
+            });
+        });
+
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename=Reporte-Empresa.xlsx');
+        await workbook.xlsx.write(res);
+        res.end();
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Hubo un error al generar este reporte",
             error: error.message
         });
     }

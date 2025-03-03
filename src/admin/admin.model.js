@@ -44,4 +44,4 @@ UserSchema.methods.toJSON = function() {
     return usuario;
 }
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model("Adimin", UserSchema);
