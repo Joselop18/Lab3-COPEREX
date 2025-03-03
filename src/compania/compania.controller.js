@@ -70,7 +70,7 @@ export const updateCompania = async (req, res) => {
         const { id } = req.params;
         const { name, impactLevel, yearsOfExperience, category, description, contactEmail, contactPhone } = req.body;
         const compania = await Compania.findById(id);
-        if (!compania) {
+        if (!compania){
             return res.status(404).json({
                 success: false,
                 message: "No se pudeo encontrar la empresa"
