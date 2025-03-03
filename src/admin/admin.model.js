@@ -31,10 +31,6 @@ const UserSchema = new mongoose.Schema({
     status: {
         type: Boolean,
         default: true
-    },
-    google: {
-        type: Boolean,
-        default: false
     }
 });
 
@@ -44,4 +40,4 @@ UserSchema.methods.toJSON = function() {
     return usuario;
 }
 
-export default mongoose.model("Adimin", UserSchema);
+export default mongoose.model("Admin", UserSchema);

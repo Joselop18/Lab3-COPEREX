@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "67c62b9b687d2a52aa21a570"
+  },
+  "name": "Gerathinas",
+  "impactLevel": "Medio",
+  "yearsOfExperience": 5,
+  "category": "Alimentos",
+  "contactEmail": "gerathinas@emp.tra.gt",
+  "contactPhone": "15649876",
+  "status": true,
+  "registrationDate": {
+    "$date": "2025-03-03T22:22:19.046Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c62c5d687d2a52aa21a574"
+  },
+  "name": "Pizza Company",
+  "impactLevel": "Alto",
+  "yearsOfExperience": 10,
+  "category": "Alimentos",
+  "contactEmail": "pizzacompany@pizza.org.gt",
+  "contactPhone": "48974613",
+  "status": true,
+  "registrationDate": {
+    "$date": "2025-03-03T22:25:33.664Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c62c8d687d2a52aa21a578"
+  },
+  "name": "Tech Pro",
+  "impactLevel": "Bajo",
+  "yearsOfExperience": 3,
+  "category": "Tecnologico",
+  "contactEmail": "techpro@tec.org.gt",
+  "contactPhone": "45987132",
+  "status": true,
+  "registrationDate": {
+    "$date": "2025-03-03T22:26:21.489Z"
+  },
+  "__v": 0
+}]

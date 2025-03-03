@@ -7,9 +7,8 @@ import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js'
-import Usuario from "../src/admin/admin.model.js";
 import companiaRoutes from "../src/compania/compania.routes.js"
-import { hash } from "argon2";
+import {createAdimDefault} from "../src/admin/admin.controller.js"
 
 const configurarMiddlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -25,29 +24,6 @@ const configurarRutas = (app) => {
     app.use("/companySystem/v1/companias", companiaRoutes);
 }
 
-const crearAdmin = async () => {
-    try {
-        const adminExistente = await Usuario.findOne({ email: "admin@gmail.com" });
-        if (!adminExistente) {
-            const passwordEncriptada = await hash("Admin1234");
-            const admin = new Usuario({
-                name: "Admin",
-                surname: "Dueño",
-                username: "El jefe",
-                email: "admin@gmail.com",
-                phone: "52646846",
-                password: passwordEncriptada
-            });
-            await admin.save();
-            console.log("Se creo el Admin correctamente por defecto");
-        } else {
-            console.log("El Admin ya existe");
-        }
-    } catch (error) {
-        console.error("Hay un error al poder crear el Admin:", error);
-    }
-};
-
 const conectarDB = async () => {
     try {
         await dbConnection();
@@ -62,7 +38,7 @@ export const iniciarServidor = async () => {
     const port = process.env.PORT || 3000;
 
     await conectarDB();
-    await crearAdmin();
+    await createAdimDefault();
     configurarMiddlewares(app);
     configurarRutas(app);
 

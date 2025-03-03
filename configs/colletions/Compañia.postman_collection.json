@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "4d4b24d1-3db3-491f-8bae-2dee43396615",
+		"name": "Compañia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413652"
+	},
+	"item": [
+		{
+			"name": "AdminLogin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"Admin1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/companySystem/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"companySystem",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NuevaCompañia",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2MjE4ODJhOGI4MTM3NDUwOTQ5NWQiLCJpYXQiOjE3NDEwNDA1MDMsImV4cCI6MTc0MTA0NzcwM30.QVvAAlhd9IiOXs0apXs4-BzbCCyfbZZR5vV8PWCE4Kw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tech Pro\",\r\n    \"impactLevel\": \"Bajo\",\r\n    \"yearsOfExperience\": 3,\r\n    \"category\": \"Tecnologico\",\r\n    \"contactEmail\": \"techpro@tec.org.gt\",\r\n    \"contactPhone\": \"45987132\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/companySystem/v1/companias/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"companySystem",
+						"v1",
+						"companias",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FiltroCategoria",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2MjE4ODJhOGI4MTM3NDUwOTQ5NWQiLCJpYXQiOjE3NDEwNDA1MDMsImV4cCI6MTc0MTA0NzcwM30.QVvAAlhd9IiOXs0apXs4-BzbCCyfbZZR5vV8PWCE4Kw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/companySystem/v1/companias?filtro={\"category\": \"Alimentos\"}&sort={\"name\": -1}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"companySystem",
+						"v1",
+						"companias"
+					],
+					"query": [
+						{
+							"key": "filtro",
+							"value": "{\"category\": \"Alimentos\"}"
+						},
+						{
+							"key": "sort",
+							"value": "{\"name\": -1}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FiltroAñosExperiencia",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2MjE4ODJhOGI4MTM3NDUwOTQ5NWQiLCJpYXQiOjE3NDEwNDA1MDMsImV4cCI6MTc0MTA0NzcwM30.QVvAAlhd9IiOXs0apXs4-BzbCCyfbZZR5vV8PWCE4Kw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/companySystem/v1/companias?filtro={\"yearsOfExperience\": \"10\"}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"companySystem",
+						"v1",
+						"companias"
+					],
+					"query": [
+						{
+							"key": "filtro",
+							"value": "{\"yearsOfExperience\": \"10\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FiltroNiveldeImpacto",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M2MjE4ODJhOGI4MTM3NDUwOTQ5NWQiLCJpYXQiOjE3NDEwNDA1MDMsImV4cCI6MTc0MTA0NzcwM30.QVvAAlhd9IiOXs0apXs4-BzbCCyfbZZR5vV8PWCE4Kw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/companySystem/v1/companias?filtro={\"impactLevel\": \"Medio\"}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"companySystem",
+						"v1",
+						"companias"
+					],
+					"query": [
+						{
+							"key": "filtro",
+							"value": "{\"impactLevel\": \"Medio\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
