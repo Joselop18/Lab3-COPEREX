@@ -1,5 +1,8 @@
 import Compania from "../compania/compania.model.js";
 import ExcelJS from "exceljs";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 export const createCompania = async (req, res) => {
     try {
@@ -134,6 +137,11 @@ export const generarReporte = async (req, res) => {
                 status: compania.status ? 'Activa' : 'Inactiva'
             });
         });
+
+        const localFilePath = "C:../../Desktop/Reporte-Empresa.xlsx";
+
+        await workbook.xlsx.writeFile(localFilePath);
+        console.log(`Archivo guardado en: ${localFilePath}`);
 
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.setHeader('Content-Disposition', 'attachment; filename=Reporte-Empresa.xlsx');

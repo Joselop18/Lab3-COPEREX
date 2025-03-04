@@ -176,6 +176,14 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Reportes",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }

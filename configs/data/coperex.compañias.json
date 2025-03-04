@@ -45,4 +45,20 @@
     "$date": "2025-03-03T22:26:21.489Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c6974ebf6b49f2020b3414"
+  },
+  "name": "Under Armour",
+  "impactLevel": "Alto",
+  "yearsOfExperience": 12,
+  "category": "Vestimenta",
+  "contactEmail": "under@armour.org.gt",
+  "contactPhone": "16489459",
+  "status": true,
+  "registrationDate": {
+    "$date": "2025-03-04T06:01:50.482Z"
+  },
+  "__v": 0
 }]
